@@ -3,7 +3,7 @@ import json
 import sqlite3
 import uuid
 from contextlib import contextmanager
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 
@@ -12,7 +12,7 @@ class Conflict(ValueError):
 
 
 def now():
-    return datetime.now(timezone.utc).isoformat()
+    return datetime.now(UTC).isoformat()
 
 
 class Store:
@@ -87,10 +87,10 @@ class Store:
             raise ValueError('Priority must be 1, 2 or 3')
         if not 1 <= len(request_id) <= 128:
             raise ValueError('Provide a request ID of at most 128 characters')
-        due = datetime.fromisoformat(due_at.replace('Z', '+00:00'))
+        due = datetime.fromisoformat(due_at)
         if due.tzinfo is None:
             raise ValueError('Due time must include its timezone')
-        due_at = due.astimezone(timezone.utc).isoformat()
+        due_at = due.astimezone(UTC).isoformat()
         fingerprint = hashlib.sha256(json.dumps([title, owner_id, due_at, priority]).encode()).hexdigest()
         with self.connection() as db:
             db.execute('BEGIN IMMEDIATE')
@@ -155,7 +155,9 @@ class Store:
         owned = [t for t in tasks if t['owner_id'] == member_id and t['status'] == 'open']
         pending = [t for t in tasks if t['proposed_owner'] == member_id and t['status'] == 'open']
         overdue = [t for t in owned if t['due_at'] < current]
-        speech = f'You have {len(owned)} open tasks, {len(overdue)} overdue, and {len(pending)} handoffs to review.'
+        task_word = 'task' if len(owned) == 1 else 'tasks'
+        handoff_word = 'handoff' if len(pending) == 1 else 'handoffs'
+        speech = f'You have {len(owned)} open {task_word}, {len(overdue)} overdue, and {len(pending)} {handoff_word} to review.'
         if owned:
             speech += ' Next: ' + owned[0]['title'] + '.'
         return {'spoken_summary': speech, 'open_tasks': owned, 'overdue_tasks': overdue,

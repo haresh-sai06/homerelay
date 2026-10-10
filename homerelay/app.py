@@ -2,7 +2,7 @@ import os
 import secrets
 from contextlib import asynccontextmanager
 from pathlib import Path
-from typing import Literal
+from typing import Any, Literal
 
 from fastapi import FastAPI, Request
 from fastapi.responses import FileResponse, JSONResponse
@@ -54,7 +54,8 @@ class AccessGuard:
                     return
             else:
                 client = (scope.get('client') or ('',))[0]
-                if client not in ('127.0.0.1', '::1', 'testclient'):
+                local_host = host.split(':')[0] in ('localhost', '127.0.0.1', 'testserver') or host.startswith('[::1]')
+                if client not in ('127.0.0.1', '::1', 'testclient') or not local_host:
                     await JSONResponse({'detail': 'Set HOMERELAY_TOKEN for network access'}, status_code=403)(scope, receive, send)
                     return
         await self.app(scope, receive, send)
@@ -68,32 +69,32 @@ def create_app(db_path=None, token=None):
                   'Actor IDs describe the selected member; this demo does not authenticate individual people.')
 
     @mcp.tool(annotations={'readOnlyHint': True})
-    def household_board() -> dict:
+    def household_board() -> dict[str, Any]:
         """Read members and current tasks before proposing or confirming a change."""
         return {'members': store.members(), 'tasks': store.list_tasks()}
 
     @mcp.tool(annotations={'readOnlyHint': True})
-    def household_briefing(member_id: str) -> dict:
+    def household_briefing(member_id: str) -> dict[str, Any]:
         """Get a grounded spoken briefing, overdue tasks and pending handoffs for a member."""
         return store.briefing(member_id)
 
     @mcp.tool()
-    def create_household_task(title: str, owner_id: str, due_at: str, priority: int, request_id: str) -> dict:
+    def create_household_task(title: str, owner_id: str, due_at: str, priority: int, request_id: str) -> dict[str, Any]:
         """After confirmation, create an errand. Due time needs a timezone. Reuse request_id on retries."""
         return store.create(title, owner_id, due_at, priority, request_id)
 
     @mcp.tool()
-    def propose_handoff(task_id: str, actor_id: str, recipient_id: str, version: int) -> dict:
+    def propose_handoff(task_id: str, actor_id: str, recipient_id: str, version: int) -> dict[str, Any]:
         """After owner confirmation, propose a handoff. Ownership stays until the recipient accepts."""
         return store.change(task_id, actor_id, version, 'propose', recipient_id)
 
     @mcp.tool()
-    def respond_to_handoff(task_id: str, actor_id: str, version: int, accept: bool) -> dict:
+    def respond_to_handoff(task_id: str, actor_id: str, version: int, accept: bool) -> dict[str, Any]:
         """After recipient confirmation, accept or decline a pending handoff using the latest version."""
         return store.change(task_id, actor_id, version, 'accept' if accept else 'decline')
 
     @mcp.tool()
-    def complete_household_task(task_id: str, actor_id: str, version: int) -> dict:
+    def complete_household_task(task_id: str, actor_id: str, version: int) -> dict[str, Any]:
         """After the current owner confirms completion, close the task and record the action."""
         return store.change(task_id, actor_id, version, 'complete')
 
