@@ -55,9 +55,9 @@ python -m pip_audit -r requirements.txt
 node --check homerelay/static/app.js
 ```
 
-See [validation evidence](docs/validation.md), [architecture and requirements](docs/architecture.md), and [submission draft](docs/submission.md). Tests use temporary databases; the browser screenshots contain fictional demonstration data. No publicly hosted app or final competition submission is claimed.
+See [validation evidence](docs/validation.md), [architecture and requirements](docs/architecture.md), and [verified submission](docs/submission.md). Tests use temporary databases; the browser screenshots contain fictional demonstration data. No publicly hosted app is provisioned. [HomeRelay was submitted to Next Byte Hacks V5](https://devpost.com/software/homerelay-n1jvao) on October 10, 2026; Devpost confirmed receipt.
 
-[Watch/download the genuine captioned browser demo](https://raw.githubusercontent.com/haresh-sai06/homerelay/main/docs/evidence/homerelay-demo.mp4) (2:42, no audio). The file records actual app states using timestamped browser captures; portal video-host compatibility remains to be checked.
+[Watch the genuine captioned browser demo](https://youtu.be/FvrlDI36vqI) (2:42, no audio). The file records actual app states using timestamped browser captures; YouTube publication, playback and Devpost video-host acceptance were verified.
 
 ## Container
 
@@ -73,4 +73,4 @@ Container construction is provided for portability and has not been executed in 
 
 The initial concept was TRL 2. Integrated local tests and a browser demonstration support TRL 4. Real household evaluation, authenticated member accounts, accessible usability testing and a verified operational deployment are needed before claiming TRL 5 or higher.
 
-The current source and assets were produced with Codex assistance under the team lead's authorization. Teammate contributions have not been established and must be confirmed before a competition entry represents them. MIT license applies to original application source; dependencies retain their own licenses.
+The current source and assets were produced with Codex assistance under the team lead's authorization. Both team profiles are linked in Devpost. No teammate-specific code contributions are claimed. MIT license applies to original application source; dependencies retain their own licenses.

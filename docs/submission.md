@@ -1,6 +1,9 @@
-# HomeRelay — local submission draft
+# HomeRelay — verified submission
 
-Status: project and written materials prepared. No Devpost submission or registration receipt exists.
+Status: submitted to Next Byte Hacks V5 on October 10, 2026. Devpost displayed “Project submitted!”. Entry ID: 1227852.
+
+Project: https://devpost.com/software/homerelay-n1jvao
+Demo: https://youtu.be/FvrlDI36vqI (unlisted; anyone with the link can watch).
 
 **Tagline:** Ask for help. Keep responsibility clear.
 
@@ -30,12 +33,12 @@ Evaluate with real households, add individual authentication and household isola
 
 ## Disclosure
 
-New application source was developed on October 10, 2026 with extensive Codex AI assistance. Public dependencies were used; no existing project source was reused. No Alexa connection, external LLM session or sponsor-specific integration is claimed. Proposed team: Haresh Sainaath and Shyam Prasath S; account linking and actual contribution descriptions remain pending. Do not invent teammate work.
+New application source was developed on October 10, 2026 with extensive Codex AI assistance. Public dependencies were used; no existing project source was reused. No Alexa connection, external LLM session or sponsor-specific integration is claimed. Team profiles: Haresh Sai_06 (shareshsainaath) and Shyam Prasath S (shyam03072006), both verified in the portal. No teammate-specific code contributions are claimed.
 
-Repository: https://github.com/haresh-sai06/homerelay (verify after publication).
+Repository: https://github.com/haresh-sai06/homerelay (public source verified).
 Public live demo: pending, not deployed. Local demo: http://127.0.0.1:8741/.
-Video: `docs/evidence/homerelay-demo.mp4`, a 2:42 English-captioned capture of the actual browser workflow. The recording uses timestamped browser frames and preserves elapsed time between captures; it has no audio. A portal-supported public video URL remains to be verified. Screenshots: `docs/evidence/01-pending-handoff.jpg`, `02-accepted-handoff.jpg`, `03-completed.jpg`.
+Video: `docs/evidence/homerelay-demo.mp4`, a 2:42 English-captioned capture of the actual browser workflow. The recording uses timestamped browser frames and preserves elapsed time between captures; it has no audio. YouTube host accepted by Devpost: https://youtu.be/FvrlDI36vqI. Publication, no-issues checks and playback were verified. Screenshots: `docs/evidence/01-pending-handoff.jpg`, `02-accepted-handoff.jpg`, `03-completed.jpg`.
 
 ## Next Byte Hacks V5 compliance
 
-This is a proposed exclusive first target, not an existing submitted entry. The official rules require new work during the event, accessible source, screenshots and a demo video. A 2–3 minute video fits both the overview's 1–3 minute and rules' 2–5 minute limits. Both participants must personally review the eligibility and legal terms. The AI clause prohibits policy-violating AI code; it does not expressly endorse unrestricted autonomous development, so retain that nuance and confirm the intended assistance level before final submission. Cross-submission permission is unknown; do not submit this project to a second event without verifying both policies.
+This project was submitted exclusively to Next Byte Hacks V5; the portal confirmed receipt. The official rules require new work during the event, accessible source, screenshots and a demo video. A 2–3 minute video fits both the overview's 1–3 minute and rules' 2–5 minute limits. Registration and submission declarations were completed under the team lead’s specific authorization, with Shyam’s consent already confirmed. The AI clause prohibits policy-violating AI code. Compliant assistance was assessed under that conditional wording, and extensive assistance is disclosed. This is an interpretation of the published rules, not an organizer endorsement; organizers retain final eligibility judgment. Cross-submission permission is unknown; do not submit this project to a second event without verifying both policies.
