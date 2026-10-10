@@ -57,6 +57,8 @@ node --check homerelay/static/app.js
 
 See [validation evidence](docs/validation.md), [architecture and requirements](docs/architecture.md), and [submission draft](docs/submission.md). Tests use temporary databases; the browser screenshots contain fictional demonstration data. No publicly hosted app or final competition submission is claimed.
 
+[Watch/download the genuine captioned browser demo](https://raw.githubusercontent.com/haresh-sai06/homerelay/main/docs/evidence/homerelay-demo.mp4) (2:42, no audio). The file records actual app states using timestamped browser captures; portal video-host compatibility remains to be checked.
+
 ## Container
 
 ```sh

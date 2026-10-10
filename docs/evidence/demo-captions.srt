@@ -1,0 +1,45 @@
+1
+00:00:00,000 --> 00:00:33,500
+HomeRelay: ask for help, keep responsibility clear.
+A request does not transfer ownership until the recipient accepts.
+
+2
+00:00:33,500 --> 00:01:02,600
+Alex creates a household errand with an owner and a due time.
+The browser asks for confirmation before saving it.
+
+3
+00:01:02,600 --> 00:01:22,500
+The task is saved. FastAPI validates changes; SQLite persists them.
+Task versions reject stale changes; request IDs prevent duplicate creation.
+
+4
+00:01:22,500 --> 00:01:40,100
+Alex proposes a handoff to Mira and confirms it.
+Alex remains responsible while the request waits for a response.
+
+5
+00:01:40,100 --> 00:01:52,600
+Mira sees the pending request and can accept or decline.
+Nicknames select a demo actor; they do not authenticate individual people.
+
+6
+00:01:52,600 --> 00:02:08,400
+Mira confirms acceptance. The stored owner changes to Mira.
+This is the actual running application with fictional household data.
+
+7
+00:02:08,400 --> 00:02:23,600
+The page is reloaded; Mira is still the owner.
+Six real HTTP MCP tools expose the same validated store operations.
+
+8
+00:02:23,600 --> 00:02:28,400
+Mira confirms that the errand is complete.
+Nine automated tests also cover REST, MCP, retries and concurrent edits.
+
+9
+00:02:28,400 --> 00:02:41,510
+Completed tasks and an ordered history preserve the workflow.
+AI-assisted local prototype; no Alexa connection or field study is claimed.
+Next: individual authentication, household isolation and real user evaluation.

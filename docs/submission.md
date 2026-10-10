@@ -34,7 +34,7 @@ New application source was developed on October 10, 2026 with extensive Codex AI
 
 Repository: https://github.com/haresh-sai06/homerelay (verify after publication).
 Public live demo: pending, not deployed. Local demo: http://127.0.0.1:8741/.
-Video: pending. Screenshots: `docs/evidence/01-pending-handoff.jpg`, `02-accepted-handoff.jpg`, `03-completed.jpg`.
+Video: `docs/evidence/homerelay-demo.mp4`, a 2:42 English-captioned capture of the actual browser workflow. The recording uses timestamped browser frames and preserves elapsed time between captures; it has no audio. A portal-supported public video URL remains to be verified. Screenshots: `docs/evidence/01-pending-handoff.jpg`, `02-accepted-handoff.jpg`, `03-completed.jpg`.
 
 ## Next Byte Hacks V5 compliance
 
