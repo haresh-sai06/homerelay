@@ -29,6 +29,7 @@ The UI reads a grounded briefing aloud when browser speech synthesis is availabl
 - Mark a task complete as its current owner; record an ordered history.
 - Preserve state after reload and process restart.
 - Reject stale changes using task versions and duplicate creation retries using request IDs.
+- Retry an unchanged task draft with the same request ID after an uncertain response, within the current tab. New edits made during a save remain available.
 - Obtain a briefing from stored facts through REST or MCP.
 
 ## MCP
@@ -52,6 +53,7 @@ python -m ruff check .
 python -m pip check
 python -m pip_audit -r requirements.txt
 # Optional with Node installed:
+node --test tests/task-form.test.cjs
 node --check homerelay/static/app.js
 ```
 
@@ -74,3 +76,5 @@ Container construction is provided for portability and has not been executed in 
 The initial concept was TRL 2. Integrated local tests and a browser demonstration support TRL 4. Real household evaluation, authenticated member accounts, accessible usability testing and a verified operational deployment are needed before claiming TRL 5 or higher.
 
 The current source and assets were produced with Codex assistance under the team lead's authorization. Both team profiles are linked in Devpost. No teammate-specific code contributions are claimed. MIT license applies to original application source; dependencies retain their own licenses.
+
+On November 1, 2026, within the extended Next Byte build window, a reliability follow-up corrected task-creation retries and draft retention. The original October 10 demonstration still shows the main workflow. Retry keys live in the current tab only: reloading, editing the details, or starting another task ends that retry association. Inspect the board before retrying an uncertain save; this is not an exactly-once guarantee across tabs or restarts.

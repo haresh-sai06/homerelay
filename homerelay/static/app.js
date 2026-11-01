@@ -3,6 +3,8 @@ let board = {members: [], tasks: [], history: []};
 let filter = 'open';
 let accessToken = '';
 let summary = '';
+let pendingTask = null;
+let savingTask = false;
 const $ = id => document.getElementById(id);
 const notice = message => { $('notice').textContent = message; };
 
@@ -98,13 +100,36 @@ $('member-form').addEventListener('submit', event => {
   event.preventDefault(); run(async () => { const member = await api('/members',{name:$('member').value}); await load(); $('actor').value = member.id; $('member').value = ''; renderTasks(); await renderBriefing(); });
 });
 $('task-form').addEventListener('submit', event => {
-  event.preventDefault(); run(async () => {
-    const title = $('title').value.trim(); const owner = board.members.find(m => m.id === $('owner').value);
-    if (!owner) throw new Error('Add a household member first.');
-    const due = new Date($('due').value).toISOString();
-    if (!await confirm(`Add “${title}” for ${owner.name}, due ${date(due)}?`)) return;
-    await api('/tasks',{title,owner_id:owner.id,due_at:due,priority:Number($('priority').value),request_id:crypto.randomUUID()});
-    $('title').value = ''; await load();
+  event.preventDefault();
+  if (savingTask) return;
+  savingTask = true;
+  $('create-task').disabled = true;
+  run(async () => {
+    try {
+      const formState = () => JSON.stringify([$('title').value.trim(), $('owner').value, $('due').value, $('priority').value]);
+      const initialState = formState();
+      const owner = board.members.find(m => m.id === $('owner').value);
+      if (!owner) throw new Error('Add a household member first.');
+      const draft = {title:$('title').value.trim(), owner_id:owner.id,
+        due_at:new Date($('due').value).toISOString(), priority:Number($('priority').value)};
+      if (!await confirm(`Add “${draft.title}” for ${owner.name}, due ${date(draft.due_at)}?`)) return;
+      const fingerprint = JSON.stringify(draft);
+      if (!pendingTask || pendingTask.fingerprint !== fingerprint) {
+        pendingTask = {fingerprint, request_id:crypto.randomUUID()};
+      }
+      const saved = await api('/tasks', {...draft, request_id:pendingTask.request_id});
+      if (!saved || typeof saved.id !== 'string' || !saved.id.trim()) {
+        throw new Error('The server did not confirm this task. Your draft has been kept. Check the board before retrying.');
+      }
+      pendingTask = null;
+      const newerDraft = formState() !== initialState;
+      if (!newerDraft) $('title').value = '';
+      await load();
+      if (newerDraft) notice('Task saved. Your newer draft has been kept for the next task.');
+    } finally {
+      savingTask = false;
+      $('create-task').disabled = false;
+    }
   });
 });
 $('actor').addEventListener('change', () => run(async () => {renderTasks(); await renderBriefing();}));

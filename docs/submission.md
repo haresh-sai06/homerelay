@@ -42,3 +42,9 @@ Video: `docs/evidence/homerelay-demo.mp4`, a 2:42 English-captioned capture of t
 ## Next Byte Hacks V5 compliance
 
 This project was submitted exclusively to Next Byte Hacks V5; the portal confirmed receipt. The official rules require new work during the event, accessible source, screenshots and a demo video. A 2–3 minute video fits both the overview's 1–3 minute and rules' 2–5 minute limits. Registration and submission declarations were completed under the team lead’s specific authorization, with Shyam’s consent already confirmed. The AI clause prohibits policy-violating AI code. Compliant assistance was assessed under that conditional wording, and extensive assistance is disclosed. This is an interpretation of the published rules, not an organizer endorsement; organizers retain final eligibility judgment. Cross-submission permission is unknown; do not submit this project to a second event without verifying both policies.
+
+### November 1 update
+
+The [official schedule](https://next-byte-hacks-v5.devpost.com/details/dates) now ends submissions on November 7, 2026 at 5:00 PM EST, which is November 8 at 3:30 AM IST. This supersedes the original October 31 EDT cutoff; the original October 10 receipt remains historical evidence. No second entry was submitted.
+
+A follow-up built on November 1 with Codex assistance preserves task drafts during delayed/unconfirmed saves and reuses the current tab's retry key for unchanged details. The public demo's core create/handoff/complete flow remains representative; it does not demonstrate these new failure scenarios. No deployment, household trial or higher TRL is claimed.
